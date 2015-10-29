@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BuzzBack Concept Database</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<%= favicon_link_tag '/favicon.ico' %>
+</head>
+<body>
+<%= link_to "Home", root_path %>
+<%= link_to "Add Concepts", uploads_path %>
+<%= yield %>
+<div>
+  <% if flash[:notice] %>
+    <p class="notice"><%= notice %></p>
+  <% end %>
+  <% if flash[:alert] %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+<% #Show Log In/Out links where appropriate %>
+<% if controller_name != 'sessions' %>
+
+<% if admin_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_admin_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_admin_session_path)  %>  
+  </li>
+<% end %>
+<% end %>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+<html>
+<h1>Please log in!</h1>
+<%= form_tag("/sessions") do %>
+<%= label_tag "email", "Email" %>
+<%= text_field_tag "email" %>
+
+<%= label_tag "password", "Password" %>
+<%= password_field_tag %>
+
+<%= submit_tag "Log In" %>
+<% end %>
+</html>
